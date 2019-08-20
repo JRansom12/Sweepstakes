@@ -8,7 +8,21 @@ namespace Sweepstakes
 {
     class SweepstakesStackManager : ISweepstakesManager
     {
-        private void InsertSweepstakes(Sweepstakes sweepstakes) { }
-        private Sweepstakes GetSweepstakes() { }
+        Stack<Contestant> contestantStack = new Stack<Contestant>();
+        private void InsertSweepstakes(Sweepstakes sweepstakes)
+        {
+            throw new NotImplementedException();
+        }
+        private Sweepstakes GetSweepstakes()
+        {
+            throw new NotImplementedException();
+        }
+        private void CreateContestantStack()
+        {
+            for (int i = 0; i < sweepstakes.contestants.Count; i++)
+            {
+                contestantStack.Push(sweepstakes.contestants[i]);
+            }
+        }
     }
 }

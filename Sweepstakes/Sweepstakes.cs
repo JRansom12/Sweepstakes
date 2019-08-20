@@ -51,6 +51,7 @@ namespace Sweepstakes
             int winner = GenerateRandomNumber(min, numberOfContestants);
             while (match == false)
             for (int i = 0; i < contestants.Count; i++) //search through dictionary for winner
+                                                        //use dictionary example datastructure code
             {
                 if(winner == contestant.registrationNumber)
                 {
