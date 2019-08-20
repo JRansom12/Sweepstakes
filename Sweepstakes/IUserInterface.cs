@@ -8,10 +8,6 @@ namespace Sweepstakes
 {
     interface IUserInterface
     {
-        public string GetUserInput(string text)
-        {
-            Console.WriteLine(text);
-            return Console.ReadLine();
-        }
+
     }
 }
