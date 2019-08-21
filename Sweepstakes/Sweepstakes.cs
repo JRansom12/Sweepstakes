@@ -14,6 +14,7 @@ namespace Sweepstakes
         private int totalNumberOfContestants;
         private Contestant contestant;
         private List<Contestant> contestants;
+        Dictionary<int, string> contestantsInSweepstakes;
 
         //constructor
         public Sweepstakes()
@@ -22,20 +23,22 @@ namespace Sweepstakes
             numberOfContestants = 0;
             totalNumberOfContestants = 5;
             contestants = new List<Contestant>();
+            contestantsInSweepstakes = new Dictionary<int, string>();
         }
 
 
         // member methods
         public void SweepstakesMethod() //parameter string name
         {
-            Dictionary<string, int> contestantsInSweepstakes = new Dictionary<string, int>();
             for (int i = 0; i < totalNumberOfContestants; i++)
             {
                 contestant = new Contestant();
-                contestants.Add(contestant);
                 RegisterContestant(contestant);
+                contestantsInSweepstakes.Add(contestant.registrationNumber, contestant.firstName + " " + contestant.lastName);
+                //contestants.Add(contestant);
+                //RegisterContestant(contestant);
             }
-            Console.WriteLine(PickWinner(contestants));
+            Console.WriteLine(PickWinner(contestantsInSweepstakes));
         }
         public string GetUserInput(string text)
         {
@@ -51,11 +54,14 @@ namespace Sweepstakes
             contestant.registrationNumber = numberOfContestants;
             numberOfContestants++;
         }
-        private string PickWinner(List<Contestant> contestants)
+        private string PickWinner(/*List<Contestant> contestants*/Dictionary<int, string> contestantsInSweepstakes)
         {
             int winningNumber = GenerateRandomNumber(min, numberOfContestants); //search through dictionary for winner
-            Contestant winner = contestants.Find(i => i.registrationNumber == winningNumber);
-            return winner.firstName + " " + winner.lastName;
+            //Contestant winner = contestants.Find(i => i.registrationNumber == winningNumber);
+            int winner = contestantsInSweepstakes.Keys.FirstOrDefault(x => x.Equals(winningNumber));
+            string winnerName = contestantsInSweepstakes[winner];
+            return winnerName;
+            //return winner.firstName + " " + winner.lastName;
         }
         private int GenerateRandomNumber(int min, int max)
         {
@@ -66,18 +72,6 @@ namespace Sweepstakes
         private void PrintContestantInfo(Contestant contestant)
         {
             Console.WriteLine("First name: " + contestant.firstName + "\nLast name: " + contestant.lastName + "\nEmail address: " + contestant.emailAddress + "\nRegistration number: " + contestant.registrationNumber);
-        }
-        private void CreateDictionary()
-        {
-            Dictionary<string, int> contestantsInSweepstakes = new Dictionary<string, int>();
-            foreach (Contestant contestant in contestants)
-            {
-                contestantsInSweepstakes.Add(contestant.firstName + " " + contestant.lastName, contestant.registrationNumber);
-            }
-            foreach (KeyValuePair<string, int> contestant in contestantsInSweepstakes)
-            {
-                Console.WriteLine(contestant.Key + " - " + contestant.Value);
-            }
         }
     }
 }
