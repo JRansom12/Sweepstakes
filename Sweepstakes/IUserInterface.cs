@@ -8,6 +8,6 @@ namespace Sweepstakes
 {
     interface IUserInterface
     {
-
+        string GetUserInput(string text);
     }
 }

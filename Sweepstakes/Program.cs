@@ -10,6 +10,9 @@ namespace Sweepstakes
     {
         static void Main(string[] args)
         {
+            Sweepstakes sweepPrimeRib = new Sweepstakes();
+            sweepPrimeRib.SweepstakesMethod();
+            Console.ReadLine();
         }
     }
 }

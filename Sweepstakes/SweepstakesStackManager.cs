@@ -9,20 +9,24 @@ namespace Sweepstakes
     class SweepstakesStackManager : ISweepstakesManager
     {
         Stack<Contestant> contestantStack = new Stack<Contestant>();
-        private void InsertSweepstakes(Sweepstakes sweepstakes)
+
+        public Sweepstakes GetSweepstakes() //pop off of stack
         {
             throw new NotImplementedException();
         }
-        private Sweepstakes GetSweepstakes()
+
+        public void InsertSweepstakes(Sweepstakes sweepstakes)  //push onto stack
         {
-            throw new NotImplementedException();
+            
         }
+
         private void CreateContestantStack()
         {
-            for (int i = 0; i < sweepstakes.contestants.Count; i++)
-            {
-                contestantStack.Push(sweepstakes.contestants[i]);
-            }
+            throw new NotImplementedException();
+            //for (int i = 0; i < sweepstakes.contestants.Count; i++)
+            //{
+            //    contestantStack.Push(sweepstakes.contestants[i]);
+            //}
         }
     }
 }
