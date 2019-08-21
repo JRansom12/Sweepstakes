@@ -12,35 +12,35 @@ namespace Sweepstakes
         private int min; //minimum number of contestants
         private int numberOfContestants;
         private int totalNumberOfContestants;
+        private string nameOfSweepstake;
         private Contestant contestant;
-        private List<Contestant> contestants;
+        //private List<Contestant> contestants;
         Dictionary<int, Contestant> contestantsInSweepstakes;
 
         //constructor
         public Sweepstakes()
         {
+            nameOfSweepstake = null;
             min = 0;
             numberOfContestants = 0;
-            contestants = new List<Contestant>();
+            //contestants = new List<Contestant>(); // To run sweepstakes with a list
             contestantsInSweepstakes = new Dictionary<int, Contestant>();
         }
-
 
         // member methods
         public void SweepstakesMethod() //parameter string name
         {
+            nameOfSweepstake = GetUserInput("What is the name of this sweepstake?");
             totalNumberOfContestants = Convert.ToInt32(GetUserInput("How many contestants would you like to enter?"));
             for (int i = 0; i < totalNumberOfContestants; i++)
             {
                 contestant = new Contestant();
                 RegisterContestant(contestant);
-                contestantsInSweepstakes.Add(contestant.registrationNumber, contestant);
-                //contestants.Add(contestant);
-                //RegisterContestant(contestant);
             }
-            Console.WriteLine(PickWinner(contestantsInSweepstakes));
+            string winner = PickWinner(contestantsInSweepstakes);
+            Console.WriteLine("The winner of " + nameOfSweepstake + " is " + winner);
         }
-        public string GetUserInput(string text)
+    public string GetUserInput(string text)
         {
             Console.WriteLine(text);
             string response = Console.ReadLine().ToString();
@@ -53,6 +53,8 @@ namespace Sweepstakes
             contestant.emailAddress = GetUserInput("Enter email address:");
             contestant.registrationNumber = numberOfContestants;
             numberOfContestants++;
+            contestantsInSweepstakes.Add(contestant.registrationNumber, contestant);
+            //contestants.Add(contestant);
         }
         private string PickWinner(/*List<Contestant> contestants*/Dictionary<int, Contestant> contestantsInSweepstakes)
         {
@@ -60,7 +62,8 @@ namespace Sweepstakes
             //Contestant winner = contestants.Find(i => i.registrationNumber == winningNumber);
             int winKey = contestantsInSweepstakes.Keys.FirstOrDefault(x => x.Equals(winningNumber));
             Contestant winner = contestantsInSweepstakes[winKey];
-            return "The winner is " + winner.firstName + " " + winner.lastName;
+            return winner.firstName + " " + winner.lastName;
+            //return winner; option to return Contestant instead of string
         }
         private int GenerateRandomNumber(int min, int max)
         {

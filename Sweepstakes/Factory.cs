@@ -27,5 +27,11 @@ namespace Sweepstakes
             }
             return manager;
         }
+        //public string GetUserInput(string text)
+        //{
+        //    Console.WriteLine(text);
+        //    string response = Console.ReadLine().ToString();
+        //    return response;
+        //}
     }
 }

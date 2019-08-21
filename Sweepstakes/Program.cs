@@ -10,9 +10,9 @@ namespace Sweepstakes
     {
         static void Main(string[] args)
         {
-            Sweepstakes sweepPrimeRib = new Sweepstakes();
-            sweepPrimeRib.SweepstakesMethod();
-            Console.ReadLine();
+            Factory factory = new Factory();
+            MarketingFirm market = new MarketingFirm(factory.ChooseManager());
+            market.RunSweepstakes();
         }
     }
 }
