@@ -31,7 +31,9 @@ namespace Sweepstakes
         public void SweepstakesMethod() //parameter string name
         {
             nameOfSweepstake = GetUserInput("What is the name of this sweepstake?");
-            totalNumberOfContestants = Convert.ToInt32(GetUserInput("How many contestants would you like to enter?"));
+            Console.WriteLine("How many contestants would you like to enter?");
+            totalNumberOfContestants = Convert.ToInt32(Console.ReadLine());
+
             for (int i = 0; i < totalNumberOfContestants; i++)
             {
                 contestant = new Contestant();
@@ -40,10 +42,10 @@ namespace Sweepstakes
             string winner = PickWinner(contestantsInSweepstakes);
             Console.WriteLine("The winner of " + nameOfSweepstake + " is " + winner);
         }
-    public string GetUserInput(string text)
+        public string GetUserInput(string text)
         {
             Console.WriteLine(text);
-            string response = Console.ReadLine().ToString();
+            string response = Console.ReadLine();
             return response;
         }
         private void RegisterContestant(Contestant contestant)
